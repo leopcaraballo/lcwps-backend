@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.vscode/
+TestResults/
+coverage.json
+coverage*.json
+coverage*.xml

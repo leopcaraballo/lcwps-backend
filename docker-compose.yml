@@ -1,0 +1,43 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/LCWPS.API/Dockerfile
+    container_name: lcwps-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__PostgreSql: Host=postgres;Port=5432;Database=lcwps;Username=lcwps;Password=lcwps
+      RabbitMQ__HostName: rabbitmq
+      RabbitMQ__Port: 5672
+      RabbitMQ__UserName: guest
+      RabbitMQ__Password: guest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  postgres:
+    image: postgres:16
+    container_name: lcwps-postgres
+    environment:
+      POSTGRES_DB: lcwps
+      POSTGRES_USER: lcwps
+      POSTGRES_PASSWORD: lcwps
+    ports:
+      - "5432:5432"
+    volumes:
+      - lcwps-postgres-data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: lcwps-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  lcwps-postgres-data:

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LCWPS.API/LCWPS.API.csproj" />
+    <Project Path="src/LCWPS.Application/LCWPS.Application.csproj" />
+    <Project Path="src/LCWPS.Domain/LCWPS.Domain.csproj" />
+    <Project Path="src/LCWPS.Infrastructure/LCWPS.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LCWPS.Tests.Integration/LCWPS.Tests.Integration.csproj" />
+    <Project Path="tests/LCWPS.Tests.Unit/LCWPS.Tests.Unit.csproj" />
+  </Folder>
+</Solution>
